@@ -1,0 +1,43 @@
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src/components/**/*.{js,ts,jsx,tsx,mdx}",
+  ],
+  theme: {
+    extend: {
+      colors: {
+        luxe: {
+          rose: "#c9527a",
+          rosedark: "#8f3a5c",
+          mauve: "#a97b8f",
+          blush: "#f7e9ee",
+          sage: "#a9c2ab",
+          lavender: "#b6a7d1",
+          cream: "#faf6f1",
+          ink: "#2c2430",
+        },
+      },
+      fontFamily: {
+        display: ["Playfair Display", "serif"],
+        script: ["Great Vibes", "cursive"],
+        body: ["Poppins", "sans-serif"],
+      },
+      borderRadius: {
+        none: "0px",
+        sm: "0px",
+        DEFAULT: "0px",
+        md: "0px",
+        lg: "0px",
+        xl: "0px",
+        "2xl": "0px",
+        "3xl": "0px",
+        full: "0px",
+      },
+    },
+  },
+  plugins: [],
+};
+
+export default config;

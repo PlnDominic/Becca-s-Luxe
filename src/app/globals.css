@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400&family=Great+Vibes&family=Poppins:wght@300;400;500;600;700&display=swap");
+
+* {
+  border-radius: 0 !important;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-luxe-cream text-luxe-ink font-body;
+}
+
+.section-heading {
+  @apply font-display text-3xl sm:text-4xl md:text-5xl text-luxe-ink;
+}
+
+.section-eyebrow {
+  @apply font-body uppercase tracking-[0.25em] text-xs sm:text-sm text-luxe-mauve font-semibold;
+}
+
+.btn-primary {
+  @apply inline-flex items-center justify-center gap-2 bg-luxe-rose text-white px-8 py-4 uppercase tracking-widest text-sm font-semibold transition-colors hover:bg-luxe-rosedark;
+}
+
+.btn-outline {
+  @apply inline-flex items-center justify-center gap-2 border-2 border-luxe-rose text-luxe-rose px-8 py-4 uppercase tracking-widest text-sm font-semibold transition-colors hover:bg-luxe-rose hover:text-white;
+}
