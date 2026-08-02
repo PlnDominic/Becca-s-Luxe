@@ -48,6 +48,7 @@ export const PRODUCTS: Product[] = [
     price: 95,
     description: "Insulated tumbler for daily reminders of your big day.",
     color: "bg-neutral-100",
+    image: "/images/products/personalized-tumbler.jpg",
     rating: 5.0,
     reviews: 96,
     isNew: true,
