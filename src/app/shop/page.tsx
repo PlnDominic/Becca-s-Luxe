@@ -7,6 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
 import Pagination from "@/components/Pagination";
+import Packages from "@/components/Packages";
 import Recommendations from "@/components/Recommendations";
 import NewsletterCTA from "@/components/NewsletterCTA";
 import { SearchIcon } from "@/components/icons";
@@ -230,6 +231,7 @@ function ShopContent() {
         </div>
       </section>
 
+      <Packages />
       <Recommendations products={recommended} />
       <NewsletterCTA />
       <Footer />

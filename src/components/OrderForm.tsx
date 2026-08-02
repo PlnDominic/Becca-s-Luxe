@@ -1,6 +1,7 @@
 "use client";
 
-import { FormEvent, useState } from "react";
+import { FormEvent, Suspense, useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";
 
 const OCCASIONS = [
   "Wedding",
@@ -16,9 +17,24 @@ const OCCASIONS = [
 
 type Status = "idle" | "loading" | "success" | "error";
 
-export default function OrderForm() {
+function OrderFormContent() {
+  const searchParams = useSearchParams();
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
+  const [occasion, setOccasion] = useState("");
+  const [details, setDetails] = useState("");
+
+  useEffect(() => {
+    const paramOccasion = searchParams.get("occasion");
+    const paramPackage = searchParams.get("package");
+
+    if (paramOccasion && OCCASIONS.includes(paramOccasion)) {
+      setOccasion(paramOccasion);
+    }
+    if (paramPackage) {
+      setDetails(`I'd like to order the ${paramPackage}.`);
+    }
+  }, [searchParams]);
 
   async function handleSubmit(e: FormEvent<HTMLFormElement>) {
     e.preventDefault();
@@ -44,6 +60,8 @@ export default function OrderForm() {
       setStatus("success");
       setMessage("Thank you! Your order request has been received. We'll reach out shortly.");
       form.reset();
+      setOccasion("");
+      setDetails("");
     } catch (err) {
       setStatus("error");
       setMessage(err instanceof Error ? err.message : "Something went wrong.");
@@ -110,8 +128,9 @@ export default function OrderForm() {
               id="occasion"
               name="occasion"
               required
+              value={occasion}
+              onChange={(e) => setOccasion(e.target.value)}
               className="bg-transparent border border-white/30 rounded-xl px-4 py-3 focus:outline-none focus:border-luxe-rose text-white [&>option]:text-luxe-ink"
-              defaultValue=""
             >
               <option value="" disabled>
                 Select an occasion
@@ -133,6 +152,8 @@ export default function OrderForm() {
               name="message"
               rows={5}
               required
+              value={details}
+              onChange={(e) => setDetails(e.target.value)}
               className="bg-transparent border border-white/30 rounded-xl px-4 py-3 focus:outline-none focus:border-luxe-rose text-white resize-none"
               placeholder="Product type, quantity, colors, date needed..."
             />
@@ -159,5 +180,13 @@ export default function OrderForm() {
         </form>
       </div>
     </section>
+  );
+}
+
+export default function OrderForm() {
+  return (
+    <Suspense fallback={null}>
+      <OrderFormContent />
+    </Suspense>
   );
 }
