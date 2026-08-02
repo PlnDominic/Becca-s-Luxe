@@ -15,7 +15,7 @@ export default function Products() {
           theme, colors and story. Shop the full collection online.
         </p>
 
-        <div className="mt-14 grid sm:grid-cols-2 lg:grid-cols-3 gap-6 text-left">
+        <div className="mt-14 grid grid-cols-2 lg:grid-cols-3 gap-3 sm:gap-6 text-left">
           {featured.map((product) => (
             <ProductCard key={product.id} product={product} />
           ))}

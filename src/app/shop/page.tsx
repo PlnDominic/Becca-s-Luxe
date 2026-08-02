@@ -208,7 +208,7 @@ function ShopContent() {
                 No products match your search yet.
               </div>
             ) : (
-              <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+              <div className="grid grid-cols-2 xl:grid-cols-3 gap-3 sm:gap-6">
                 {paged.map((product) => (
                   <ProductCard key={product.id} product={product} />
                 ))}
