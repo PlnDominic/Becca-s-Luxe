@@ -16,6 +16,11 @@ const CONTACT = [
   { label: "Location", value: "Taifa – Accra" },
   { label: "Call / WhatsApp", value: "+233 59 150 5197" },
   { label: "Call", value: "+233 24 418 4510" },
+  {
+    label: "Email",
+    value: "info.beccaluxe@gmail.com",
+    href: "mailto:info.beccaluxe@gmail.com",
+  },
 ];
 
 function SocialIcon({ path }: { path: string }) {
@@ -85,7 +90,13 @@ export default function Footer() {
             {CONTACT.map((item) => (
               <li key={item.value}>
                 <span className="text-luxe-mauve font-medium">{item.label}: </span>
-                {item.value}
+                {item.href ? (
+                  <a href={item.href} className="hover:text-luxe-rose">
+                    {item.value}
+                  </a>
+                ) : (
+                  item.value
+                )}
               </li>
             ))}
           </ul>
