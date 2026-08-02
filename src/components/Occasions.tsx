@@ -21,13 +21,13 @@ export default function Occasions() {
           unforgettable.
         </p>
 
-        <div className="mt-14 grid grid-cols-2 sm:grid-cols-4 gap-4 sm:gap-6">
+        <div className="mt-14 grid grid-cols-3 sm:grid-cols-4 gap-2 sm:gap-6">
           {OCCASIONS.map((occasion) => (
             <div
               key={occasion.name}
-              className={`${occasion.color} border border-luxe-rose/10 rounded-2xl py-10 px-4 flex items-center justify-center text-center transition-transform hover:-translate-y-1`}
+              className={`${occasion.color} border border-luxe-rose/10 rounded-2xl py-4 px-2 sm:py-10 sm:px-4 flex items-center justify-center text-center transition-transform hover:-translate-y-1`}
             >
-              <span className="font-display text-lg sm:text-xl text-luxe-ink">
+              <span className="font-display text-xs sm:text-xl text-luxe-ink leading-tight">
                 {occasion.name}
               </span>
             </div>
