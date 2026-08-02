@@ -76,6 +76,7 @@ export const PRODUCTS: Product[] = [
     price: 90,
     description: "Stainless steel bottle to stay hydrated in style.",
     color: "bg-neutral-100",
+    image: "/images/products/stainless-water-bottle.jpg",
     rating: 4.9,
     reviews: 74,
   },
