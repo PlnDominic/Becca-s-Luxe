@@ -6,7 +6,7 @@ export default function Products() {
   const featured = PRODUCTS.slice(0, 6);
 
   return (
-    <section id="products" className="py-24 bg-luxe-blush/40">
+    <section id="products" className="py-24 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 text-center">
         <p className="section-eyebrow mb-3">Our Collection</p>
         <h2 className="section-heading">Custom Souvenirs</h2>

@@ -6,7 +6,7 @@ const CONTACT = [
 
 export default function Footer() {
   return (
-    <footer id="contact" className="bg-luxe-cream border-t border-luxe-rose/20">
+    <footer id="contact" className="bg-white border-t border-luxe-rose/20">
       <div className="mx-auto max-w-7xl px-6 lg:px-10 py-16 grid sm:grid-cols-3 gap-10">
         <div>
           <h3 className="font-display text-2xl text-luxe-rose">

@@ -2,7 +2,7 @@ export default function Hero() {
   return (
     <section
       id="home"
-      className="relative pt-40 pb-24 sm:pt-48 sm:pb-32 bg-gradient-to-b from-luxe-blush to-luxe-cream overflow-hidden"
+      className="relative pt-40 pb-24 sm:pt-48 sm:pb-32 bg-white overflow-hidden"
     >
       <div className="absolute inset-0 opacity-40 pointer-events-none">
         <div className="absolute -top-24 -left-24 w-96 h-96 bg-luxe-lavender/30 blur-3xl" />

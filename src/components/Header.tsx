@@ -25,7 +25,7 @@ export default function Header() {
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-luxe-cream/95 shadow-md backdrop-blur" : "bg-transparent"
+        scrolled ? "bg-white/95 shadow-md backdrop-blur" : "bg-transparent"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between py-4">
@@ -64,7 +64,7 @@ export default function Header() {
       </div>
 
       {menuOpen && (
-        <div className="md:hidden bg-luxe-cream border-t border-luxe-rose/20 px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-white border-t border-luxe-rose/20 px-6 py-4 flex flex-col gap-4">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
