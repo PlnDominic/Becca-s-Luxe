@@ -1,44 +1,56 @@
 "use client";
 
+import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { Product } from "@/data/products";
 import { useCart } from "@/context/CartContext";
 import { formatPrice } from "@/lib/currency";
+import Rating from "./Rating";
 
 export default function ProductCard({ product }: { product: Product }) {
+  const router = useRouter();
   const { addItem } = useCart();
   const [added, setAdded] = useState(false);
 
-  function handleAdd() {
+  function handleAddToCart() {
     addItem(product.id);
     setAdded(true);
     setTimeout(() => setAdded(false), 1500);
   }
 
+  function handleBuyNow() {
+    addItem(product.id);
+    router.push("/checkout");
+  }
+
   return (
-    <div className="bg-white border border-luxe-rose/10 flex flex-col hover:shadow-xl transition-shadow">
-      <div
-        className={`${product.color} h-48 flex items-center justify-center border-b border-luxe-rose/10`}
-      >
-        <span className="font-script text-2xl text-luxe-ink/70">{product.tag}</span>
+    <div className="bg-white border border-luxe-ink/10 flex flex-col group">
+      <div className={`relative h-56 ${product.color} flex items-center justify-center`}>
+        <span className="absolute top-4 right-4 bg-white border border-luxe-ink/10 px-3 py-1 text-[11px] uppercase tracking-widest font-semibold text-luxe-ink">
+          {product.badge}
+        </span>
+        <span className="font-script text-3xl text-luxe-ink/60">{product.tag}</span>
       </div>
 
-      <div className="p-6 flex flex-col gap-2 flex-1">
-        <span className="section-eyebrow !text-luxe-sage">{product.category}</span>
+      <div className="p-6 flex flex-col gap-3 flex-1">
         <h3 className="font-display text-xl text-luxe-ink">{product.name}</h3>
-        <p className="text-sm text-luxe-ink/70 leading-relaxed flex-1">
-          {product.description}
-        </p>
+        <Rating score={product.rating} reviews={product.reviews} />
+        <span className="font-display text-lg text-luxe-ink">
+          {formatPrice(product.price)}
+        </span>
 
-        <div className="mt-4 flex items-center justify-between">
-          <span className="font-display text-lg text-luxe-rose">
-            {formatPrice(product.price)}
-          </span>
+        <div className="mt-auto pt-2 flex items-center gap-3">
           <button
-            onClick={handleAdd}
-            className="border-2 border-luxe-rose text-luxe-rose px-4 py-2 text-xs uppercase tracking-widest font-semibold hover:bg-luxe-rose hover:text-white transition-colors"
+            onClick={handleAddToCart}
+            className="flex-1 border-2 border-luxe-ink text-luxe-ink px-4 py-3 text-xs uppercase tracking-widest font-semibold hover:bg-luxe-ink hover:text-white transition-colors"
           >
-            {added ? "Added" : "Add to Cart"}
+            {added ? "Added" : "Add to Chart"}
+          </button>
+          <button
+            onClick={handleBuyNow}
+            className="flex-1 bg-luxe-ink text-white px-4 py-3 text-xs uppercase tracking-widest font-semibold hover:bg-luxe-rose transition-colors"
+          >
+            Buy Now
           </button>
         </div>
       </div>

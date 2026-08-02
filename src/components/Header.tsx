@@ -1,20 +1,24 @@
 "use client";
 
 import Link from "next/link";
-import { useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
+import { FormEvent, useEffect, useState } from "react";
 import CartButton from "./CartButton";
+import { SearchIcon } from "./icons";
 
 const NAV_LINKS = [
   { label: "Home", href: "/#home" },
-  { label: "About", href: "/#about" },
-  { label: "Occasions", href: "/#occasions" },
   { label: "Shop", href: "/shop" },
+  { label: "About", href: "/#about" },
   { label: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
+  const router = useRouter();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+  const [query, setQuery] = useState("");
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 24);
@@ -22,15 +26,27 @@ export default function Header() {
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  function handleSearch(e: FormEvent) {
+    e.preventDefault();
+    router.push(query.trim() ? `/shop?q=${encodeURIComponent(query.trim())}` : "/shop");
+    setSearchOpen(false);
+    setQuery("");
+  }
+
   return (
     <header
       className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-300 ${
-        scrolled ? "bg-white/95 shadow-md backdrop-blur" : "bg-transparent"
+        scrolled ? "bg-white/95 shadow-md backdrop-blur" : "bg-white"
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between py-4">
-        <Link href="/#home" className="font-display text-2xl sm:text-3xl text-luxe-rose">
-          Becca&apos;s <span className="font-script text-luxe-mauve">Luxe</span>
+        <Link href="/#home" className="flex items-center gap-3">
+          <span className="w-9 h-9 bg-luxe-ink text-white flex items-center justify-center font-display text-lg">
+            B
+          </span>
+          <span className="font-display text-xl sm:text-2xl text-luxe-ink">
+            Becca&apos;s <span className="font-script text-luxe-rose">Luxe</span>
+          </span>
         </Link>
 
         <nav className="hidden md:flex items-center gap-8">
@@ -43,17 +59,24 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
-          <CartButton />
-          <Link href="/shop" className="btn-primary !py-3 !px-6">
-            Shop Now
-          </Link>
         </nav>
 
-        <div className="md:hidden flex items-center gap-4">
+        <div className="flex items-center gap-5">
+          <button
+            aria-label="Toggle search"
+            onClick={() => setSearchOpen((v) => !v)}
+            className="hidden sm:flex text-luxe-ink hover:text-luxe-rose transition-colors"
+          >
+            <SearchIcon />
+          </button>
           <CartButton />
+          <Link href="/shop" className="hidden md:inline-flex btn-primary !py-3 !px-6">
+            Shop Now
+          </Link>
+
           <button
             aria-label="Toggle menu"
-            className="flex flex-col gap-1.5 p-2"
+            className="md:hidden flex flex-col gap-1.5 p-2"
             onClick={() => setMenuOpen((v) => !v)}
           >
             <span className="w-6 h-0.5 bg-luxe-ink" />
@@ -63,8 +86,30 @@ export default function Header() {
         </div>
       </div>
 
+      {searchOpen && (
+        <div className="hidden sm:block border-t border-luxe-ink/10 bg-white">
+          <form
+            onSubmit={handleSearch}
+            className="mx-auto max-w-7xl px-6 lg:px-10 py-4 flex items-center gap-3"
+          >
+            <SearchIcon className="w-5 h-5 text-luxe-ink/50" />
+            <input
+              autoFocus
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search for souvenirs..."
+              className="flex-1 border-b border-luxe-ink/20 py-2 focus:outline-none focus:border-luxe-rose bg-transparent"
+            />
+            <button type="submit" className="btn-primary !py-2 !px-5">
+              Search
+            </button>
+          </form>
+        </div>
+      )}
+
       {menuOpen && (
-        <div className="md:hidden bg-white border-t border-luxe-rose/20 px-6 py-4 flex flex-col gap-4">
+        <div className="md:hidden bg-white border-t border-luxe-ink/10 px-6 py-4 flex flex-col gap-4">
           {NAV_LINKS.map((link) => (
             <Link
               key={link.href}
@@ -75,6 +120,18 @@ export default function Header() {
               {link.label}
             </Link>
           ))}
+          <form onSubmit={handleSearch} className="flex items-center gap-2">
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder="Search..."
+              className="flex-1 border border-luxe-ink/20 px-3 py-2 focus:outline-none focus:border-luxe-rose"
+            />
+            <button type="submit" className="btn-primary !py-2 !px-4">
+              Go
+            </button>
+          </form>
           <Link href="/shop" className="btn-primary" onClick={() => setMenuOpen(false)}>
             Shop Now
           </Link>

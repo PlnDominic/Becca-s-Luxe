@@ -51,7 +51,7 @@ export default function CheckoutPage() {
     return (
       <main>
         <Header />
-        <section className="pt-40 pb-24 min-h-[60vh] flex items-center justify-center bg-luxe-blush/40">
+        <section className="pt-24 pb-24 min-h-[60vh] flex items-center justify-center bg-white">
           <div className="text-center max-w-lg px-6">
             <p className="section-eyebrow mb-3">Order Received</p>
             <h1 className="section-heading mb-4">Thank You!</h1>
@@ -74,7 +74,7 @@ export default function CheckoutPage() {
     <main>
       <Header />
 
-      <section className="pt-40 pb-24 bg-luxe-blush/40">
+      <section className="pt-24 pb-24 bg-white">
         <div className="mx-auto max-w-5xl px-6 lg:px-10">
           <div className="text-center mb-14">
             <p className="section-eyebrow mb-3">Almost There</p>
@@ -82,7 +82,7 @@ export default function CheckoutPage() {
           </div>
 
           {items.length === 0 ? (
-            <div className="text-center bg-white border border-luxe-rose/10 p-14">
+            <div className="text-center bg-white border border-luxe-ink/10 p-14">
               <p className="text-luxe-ink/70 mb-6">Your cart is empty.</p>
               <Link href="/shop" className="btn-primary">
                 Browse the Shop
@@ -90,7 +90,7 @@ export default function CheckoutPage() {
             </div>
           ) : (
             <div className="grid lg:grid-cols-5 gap-10">
-              <div className="lg:col-span-3 bg-white border border-luxe-rose/10 p-8">
+              <div className="lg:col-span-3 bg-white border border-luxe-ink/10 p-8">
                 <h2 className="font-display text-2xl text-luxe-ink mb-6">
                   Delivery Details
                 </h2>

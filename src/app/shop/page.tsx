@@ -1,71 +1,230 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ProductCard from "@/components/ProductCard";
-import { CATEGORIES, PRODUCTS } from "@/data/products";
+import Pagination from "@/components/Pagination";
+import Recommendations from "@/components/Recommendations";
+import NewsletterCTA from "@/components/NewsletterCTA";
+import { SearchIcon } from "@/components/icons";
+import { CATEGORIES, PRODUCTS, type Product } from "@/data/products";
 
-export default function ShopPage() {
-  const [activeCategory, setActiveCategory] = useState<string>("All");
+const PAGE_SIZE = 9;
 
-  const filtered = useMemo(
-    () =>
-      activeCategory === "All"
-        ? PRODUCTS
-        : PRODUCTS.filter((p) => p.category === activeCategory),
-    [activeCategory]
+type SortMode = "all" | "new" | "bestseller" | "discount";
+
+const SORT_OPTIONS: { label: string; value: SortMode }[] = [
+  { label: "New Arrival", value: "new" },
+  { label: "Best Seller", value: "bestseller" },
+  { label: "On Discount", value: "discount" },
+];
+
+function categoryCount(category: string) {
+  if (category === "All") return PRODUCTS.length;
+  return PRODUCTS.filter((p) => p.category === category).length;
+}
+
+function ShopContent() {
+  const searchParams = useSearchParams();
+  const [category, setCategory] = useState<string>("All");
+  const [sort, setSort] = useState<SortMode | null>(null);
+  const [query, setQuery] = useState("");
+  const [page, setPage] = useState(1);
+
+  useEffect(() => {
+    const q = searchParams.get("q");
+    if (q) setQuery(q);
+  }, [searchParams]);
+
+  const filtered = useMemo(() => {
+    let list: Product[] = [...PRODUCTS];
+
+    if (category !== "All") {
+      list = list.filter((p) => p.category === category);
+    }
+
+    if (query.trim()) {
+      const q = query.trim().toLowerCase();
+      list = list.filter(
+        (p) =>
+          p.name.toLowerCase().includes(q) ||
+          p.description.toLowerCase().includes(q) ||
+          p.category.toLowerCase().includes(q)
+      );
+    }
+
+    if (sort === "new") {
+      list = [...list].sort((a, b) => Number(b.isNew) - Number(a.isNew));
+    } else if (sort === "bestseller") {
+      list = [...list].sort(
+        (a, b) => Number(b.isBestSeller) - Number(a.isBestSeller) || b.reviews - a.reviews
+      );
+    } else if (sort === "discount") {
+      list = list.filter((p) => p.onDiscount);
+    }
+
+    return list;
+  }, [category, query, sort]);
+
+  const totalPages = Math.max(1, Math.ceil(filtered.length / PAGE_SIZE));
+  const paged = filtered.slice((page - 1) * PAGE_SIZE, page * PAGE_SIZE);
+
+  useEffect(() => setPage(1), [category, query, sort]);
+
+  const recommended = useMemo(
+    () => PRODUCTS.filter((p) => p.isBestSeller || p.isNew).slice(0, 6),
+    []
   );
 
   return (
     <main>
       <Header />
 
-      <section className="pt-40 pb-16 bg-luxe-blush/40 text-center">
-        <div className="mx-auto max-w-3xl px-6">
-          <p className="section-eyebrow mb-3">Shop The Collection</p>
-          <h1 className="section-heading">Custom Souvenirs Storefront</h1>
-          <p className="mt-4 text-luxe-ink/70">
-            Browse our ready-to-personalize keepsakes and add your favorites to
-            the cart. Every item can be customized with names, dates and colors
-            for your occasion.
-          </p>
-        </div>
-      </section>
-
-      <section className="py-16 bg-white">
+      <section className="pt-24 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="flex flex-wrap justify-center gap-3 mb-14">
-            {CATEGORIES.map((category) => (
-              <button
-                key={category}
-                onClick={() => setActiveCategory(category)}
-                className={`px-5 py-2 text-xs uppercase tracking-widest font-semibold border-2 transition-colors ${
-                  activeCategory === category
-                    ? "bg-luxe-rose border-luxe-rose text-white"
-                    : "border-luxe-rose/30 text-luxe-ink hover:border-luxe-rose"
-                }`}
-              >
-                {category}
+          <div className="relative h-[280px] sm:h-[320px] overflow-hidden bg-gradient-to-br from-luxe-ink via-luxe-mauve to-luxe-rose flex items-center justify-center">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_30%,rgba(255,255,255,0.2),transparent_45%)]" />
+            <h1 className="relative font-display text-[22vw] sm:text-8xl text-white/90 select-none">
+              Shop
+            </h1>
+          </div>
+
+          <div className="relative -mt-14 sm:-mt-16 mx-auto max-w-4xl bg-white border border-luxe-ink/10 shadow-xl px-6 sm:px-10 py-8 text-center">
+            <h2 className="font-display text-2xl sm:text-3xl text-luxe-ink">
+              Give All You Need
+            </h2>
+            <form
+              onSubmit={(e) => e.preventDefault()}
+              className="mt-5 flex flex-col sm:flex-row items-stretch gap-3 max-w-xl mx-auto"
+            >
+              <div className="flex-1 flex items-center gap-2 border border-luxe-ink/20 px-4">
+                <SearchIcon className="w-5 h-5 text-luxe-ink/40 shrink-0" />
+                <input
+                  type="text"
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                  placeholder="Search on Becca's Luxe"
+                  className="w-full py-3 focus:outline-none bg-transparent"
+                />
+              </div>
+              <button type="submit" className="btn-primary">
+                Search
               </button>
-            ))}
+            </form>
           </div>
-
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-
-          {filtered.length === 0 && (
-            <p className="text-center text-luxe-ink/60 mt-10">
-              No products found in this category yet.
-            </p>
-          )}
         </div>
       </section>
 
+      <section className="pt-16 pb-24 bg-white">
+        <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-4 gap-10">
+          <aside className="lg:col-span-1">
+            <div className="border border-luxe-ink/10 p-6">
+              <h3 className="font-display text-xl text-luxe-ink mb-4">Category</h3>
+              <ul className="flex flex-col gap-3">
+                {CATEGORIES.map((cat) => (
+                  <li key={cat}>
+                    <button
+                      onClick={() => setCategory(cat)}
+                      className="flex items-center gap-3 w-full text-left group"
+                    >
+                      <span
+                        className={`w-4 h-4 border flex items-center justify-center ${
+                          category === cat
+                            ? "bg-luxe-ink border-luxe-ink"
+                            : "border-luxe-ink/30"
+                        }`}
+                      >
+                        {category === cat && (
+                          <span className="w-2 h-2 bg-white" />
+                        )}
+                      </span>
+                      <span
+                        className={`text-sm flex-1 ${
+                          category === cat
+                            ? "text-luxe-ink font-semibold"
+                            : "text-luxe-ink/70 group-hover:text-luxe-ink"
+                        }`}
+                      >
+                        {cat === "All" ? "All Product" : cat}
+                      </span>
+                      <span className="text-xs text-luxe-ink/40">
+                        {categoryCount(cat)}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            <div className="border border-luxe-ink/10 p-6 mt-6">
+              <h3 className="font-display text-xl text-luxe-ink mb-4">Sort By</h3>
+              <ul className="flex flex-col gap-3">
+                {SORT_OPTIONS.map((option) => (
+                  <li key={option.value}>
+                    <button
+                      onClick={() =>
+                        setSort((current) => (current === option.value ? null : option.value))
+                      }
+                      className="flex items-center gap-3 w-full text-left group"
+                    >
+                      <span
+                        className={`w-4 h-4 border flex items-center justify-center ${
+                          sort === option.value
+                            ? "bg-luxe-ink border-luxe-ink"
+                            : "border-luxe-ink/30"
+                        }`}
+                      >
+                        {sort === option.value && (
+                          <span className="w-2 h-2 bg-white" />
+                        )}
+                      </span>
+                      <span
+                        className={`text-sm ${
+                          sort === option.value
+                            ? "text-luxe-ink font-semibold"
+                            : "text-luxe-ink/70 group-hover:text-luxe-ink"
+                        }`}
+                      >
+                        {option.label}
+                      </span>
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </aside>
+
+          <div className="lg:col-span-3">
+            {paged.length === 0 ? (
+              <div className="border border-luxe-ink/10 p-14 text-center text-luxe-ink/60">
+                No products match your search yet.
+              </div>
+            ) : (
+              <div className="grid sm:grid-cols-2 xl:grid-cols-3 gap-6">
+                {paged.map((product) => (
+                  <ProductCard key={product.id} product={product} />
+                ))}
+              </div>
+            )}
+
+            <Pagination page={page} totalPages={totalPages} onChange={setPage} />
+          </div>
+        </div>
+      </section>
+
+      <Recommendations products={recommended} />
+      <NewsletterCTA />
       <Footer />
     </main>
+  );
+}
+
+export default function ShopPage() {
+  return (
+    <Suspense fallback={null}>
+      <ShopContent />
+    </Suspense>
   );
 }
