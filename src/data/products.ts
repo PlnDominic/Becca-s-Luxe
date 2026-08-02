@@ -117,6 +117,7 @@ export const PRODUCTS: Product[] = [
     price: 130,
     description: "Soft accent pillow with a meaningful quote.",
     color: "bg-neutral-100",
+    image: "/images/products/throw-pillow.jpg",
     rating: 4.7,
     reviews: 58,
   },
