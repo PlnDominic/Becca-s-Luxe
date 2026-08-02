@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { Suspense, useEffect, useMemo, useState } from "react";
 import { useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
@@ -84,11 +85,20 @@ function ShopContent() {
 
       <section className="pt-24 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="relative h-[280px] sm:h-[320px] rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-luxe-ink via-luxe-mauve to-luxe-rose flex items-center justify-center">
-            <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_30%,rgba(255,255,255,0.2),transparent_45%)]" />
-            <h1 className="relative font-display text-[22vw] sm:text-8xl text-white/90 select-none">
+          <div className="relative h-[280px] sm:h-[340px] rounded-[2.5rem] overflow-hidden bg-white border border-luxe-ink/10 flex items-center">
+            <h1 className="relative z-10 font-display text-6xl sm:text-8xl text-luxe-ink/90 select-none pl-8 sm:pl-14">
               Shop
             </h1>
+            <div className="absolute right-0 bottom-0 h-full w-[60%] sm:w-[45%]">
+              <Image
+                src="/images/hero-shop.jpg"
+                alt="Woman smiling while carrying gift bags"
+                fill
+                priority
+                sizes="(min-width: 640px) 45vw, 60vw"
+                className="object-contain object-bottom"
+              />
+            </div>
           </div>
 
           <div className="relative -mt-14 sm:-mt-16 mx-auto max-w-4xl bg-white border border-luxe-ink/10 rounded-3xl shadow-xl px-6 sm:px-10 py-8 text-center">
