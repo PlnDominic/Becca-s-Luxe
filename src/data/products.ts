@@ -62,6 +62,7 @@ export const PRODUCTS: Product[] = [
     price: 65,
     description: "Classic ceramic mug with custom name or quote.",
     color: "bg-neutral-100",
+    image: "/images/products/personalized-mug.jpg",
     rating: 4.8,
     reviews: 210,
     onDiscount: true,
