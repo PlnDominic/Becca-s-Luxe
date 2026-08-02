@@ -103,6 +103,7 @@ export const PRODUCTS: Product[] = [
     price: 110,
     description: "Notebook and pen set to dream, plan and do.",
     color: "bg-neutral-100",
+    image: "/images/products/custom-journal-pen.jpg",
     rating: 5.0,
     reviews: 41,
     isNew: true,
