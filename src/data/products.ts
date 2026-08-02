@@ -89,6 +89,7 @@ export const PRODUCTS: Product[] = [
     price: 70,
     description: "Ribboned keepsake box for elegant thank-you gifts.",
     color: "bg-neutral-100",
+    image: "/images/products/ribboned-gift-box.jpg",
     rating: 4.9,
     reviews: 63,
     isBestSeller: true,
