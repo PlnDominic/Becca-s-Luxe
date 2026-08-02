@@ -20,7 +20,7 @@ export default function Hero() {
         <div className="relative h-[420px] sm:h-[480px] rounded-[2.5rem] overflow-hidden bg-white border border-luxe-ink/10">
           <Image
             src="/images/hero-products.png"
-            alt="Custom branded souvenirs: tote bag, water bottle, mug, notebook, t-shirt and more"
+            alt="Becca's Luxe custom souvenirs: tote bag, tumbler, mug, water bottle, gift boxes, journal, pillow, candle, keepsake box and tissue box"
             fill
             priority
             sizes="100vw"
