@@ -17,16 +17,15 @@ export default function Hero() {
   return (
     <section id="home" className="pt-24 bg-white">
       <div className="mx-auto max-w-7xl px-6 lg:px-10">
-        <div className="relative h-[420px] sm:h-[480px] rounded-[2.5rem] overflow-hidden bg-luxe-ink">
+        <div className="relative h-[420px] sm:h-[480px] rounded-[2.5rem] overflow-hidden bg-white border border-luxe-ink/10">
           <Image
-            src="/images/hero-shopping.jpg"
-            alt="Woman smiling while carrying Becca's Luxe gift bags"
+            src="/images/hero-products.png"
+            alt="Custom branded souvenirs: tote bag, water bottle, mug, notebook, t-shirt and more"
             fill
             priority
             sizes="100vw"
-            className="object-cover object-[center_15%]"
+            className="object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent" />
         </div>
 
         <div className="relative -mt-16 sm:-mt-20 mx-auto max-w-4xl bg-white border border-luxe-ink/10 rounded-3xl shadow-xl px-6 sm:px-10 py-8 sm:py-10 text-center">
