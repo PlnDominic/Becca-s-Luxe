@@ -130,6 +130,7 @@ export const PRODUCTS: Product[] = [
     price: 75,
     description: "Hand-poured candle for remembrance and joy.",
     color: "bg-neutral-100",
+    image: "/images/products/scented-candle.jpg",
     rating: 4.6,
     reviews: 145,
     onDiscount: true,
