@@ -6,6 +6,7 @@ export interface SouvenirPackage {
   description: string;
   items: string[];
   popular?: boolean;
+  priceIsEstimate?: boolean;
 }
 
 export const PACKAGES: SouvenirPackage[] = [
@@ -58,5 +59,32 @@ export const PACKAGES: SouvenirPackage[] = [
     description: "Polished branded gifts for clients, staff and partners.",
     items: ["Personalized Tote Bag", "Stainless Water Bottle", "Custom Journal & Pen", "Ceramic Mug"],
     popular: true,
+  },
+  {
+    id: "traditional-marriage-1",
+    name: "Traditional Marriage Package I",
+    occasion: "Traditional Marriage",
+    price: 280,
+    priceIsEstimate: true,
+    description: "A thoughtful set for the bride's traditional marriage rites.",
+    items: ["Cloth", "Scarf", "Hand Cream", "Perfume"],
+  },
+  {
+    id: "traditional-marriage-2",
+    name: "Traditional Marriage Package II",
+    occasion: "Traditional Marriage",
+    price: 240,
+    priceIsEstimate: true,
+    description: "A simple, elegant set for traditional marriage ceremonies.",
+    items: ["Cloth", "Face Towel", "Perfume"],
+  },
+  {
+    id: "traditional-marriage-3",
+    name: "Traditional Marriage Package III",
+    occasion: "Traditional Marriage",
+    price: 200,
+    priceIsEstimate: true,
+    description: "A comforting essentials set for traditional marriage ceremonies.",
+    items: ["Mug", "Towel", "Perfumes"],
   },
 ];

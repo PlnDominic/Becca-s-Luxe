@@ -5,6 +5,7 @@ import { useSearchParams } from "next/navigation";
 
 const OCCASIONS = [
   "Wedding",
+  "Traditional Marriage",
   "Baby Christening",
   "Birthday Party",
   "Funeral",

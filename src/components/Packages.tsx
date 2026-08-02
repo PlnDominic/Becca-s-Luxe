@@ -42,8 +42,13 @@ export default function Packages() {
               </ul>
 
               <div className="mt-6 flex items-center justify-between">
-                <span className="font-display text-xl text-luxe-ink">
-                  {formatPrice(pkg.price)}
+                <span className="flex flex-col">
+                  <span className="font-display text-xl text-luxe-ink">
+                    {formatPrice(pkg.price)}
+                  </span>
+                  {pkg.priceIsEstimate && (
+                    <span className="text-[11px] text-luxe-ink/50">Estimated, confirm on order</span>
+                  )}
                 </span>
                 <Link
                   href={`/?occasion=${encodeURIComponent(pkg.occasion)}&package=${encodeURIComponent(pkg.name)}#order`}

@@ -1,5 +1,6 @@
 const OCCASIONS = [
   { name: "Weddings", color: "bg-luxe-blush" },
+  { name: "Traditional Marriage", color: "bg-luxe-lavender/20" },
   { name: "Baby Christenings", color: "bg-luxe-sage/20" },
   { name: "Birthday Parties", color: "bg-luxe-lavender/20" },
   { name: "Funerals", color: "bg-luxe-mauve/10" },
