@@ -12,22 +12,24 @@ body {
   @apply bg-white text-luxe-ink font-body;
 }
 
-.section-heading {
-  @apply font-display text-3xl sm:text-4xl md:text-5xl text-luxe-ink;
-}
+@layer components {
+  .section-heading {
+    @apply font-display text-3xl sm:text-4xl md:text-5xl text-luxe-ink;
+  }
 
-.section-eyebrow {
-  @apply font-body uppercase tracking-[0.25em] text-xs sm:text-sm text-luxe-mauve font-semibold;
-}
+  .section-eyebrow {
+    @apply font-body uppercase tracking-[0.25em] text-xs sm:text-sm text-luxe-mauve font-semibold;
+  }
 
-.btn-primary {
-  @apply inline-flex items-center justify-center gap-2 bg-luxe-ink text-white px-8 py-4 rounded-full uppercase tracking-widest text-sm font-semibold transition-colors hover:bg-luxe-rose;
-}
+  .btn-primary {
+    @apply inline-flex items-center justify-center gap-2 bg-luxe-ink text-white px-8 py-4 rounded-full uppercase tracking-widest text-sm font-semibold transition-colors hover:bg-luxe-rose;
+  }
 
-.btn-outline {
-  @apply inline-flex items-center justify-center gap-2 border-2 border-luxe-ink text-luxe-ink px-8 py-4 rounded-full uppercase tracking-widest text-sm font-semibold transition-colors hover:bg-luxe-ink hover:text-white;
-}
+  .btn-outline {
+    @apply inline-flex items-center justify-center gap-2 border-2 border-luxe-ink text-luxe-ink px-8 py-4 rounded-full uppercase tracking-widest text-sm font-semibold transition-colors hover:bg-luxe-ink hover:text-white;
+  }
 
-.pill-toggle {
-  @apply px-5 py-2 rounded-full text-xs uppercase tracking-widest font-semibold border-2 transition-colors;
+  .pill-toggle {
+    @apply px-5 py-2 rounded-full text-xs uppercase tracking-widest font-semibold border-2 transition-colors;
+  }
 }

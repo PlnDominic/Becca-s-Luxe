@@ -70,7 +70,10 @@ export default function Header() {
             <SearchIcon />
           </button>
           <CartButton />
-          <Link href="/shop" className="hidden md:inline-flex btn-primary !py-3 !px-6">
+          <Link
+            href="/shop"
+            className="btn-primary !px-3 !py-1.5 !text-[10px] !tracking-wide whitespace-nowrap md:!px-6 md:!py-3 md:!text-sm md:!tracking-widest"
+          >
             Shop Now
           </Link>
 
