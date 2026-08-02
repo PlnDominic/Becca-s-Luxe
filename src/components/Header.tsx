@@ -1,14 +1,15 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useState } from "react";
+import CartButton from "./CartButton";
 
 const NAV_LINKS = [
-  { label: "Home", href: "#home" },
-  { label: "About", href: "#about" },
-  { label: "Occasions", href: "#occasions" },
-  { label: "Products", href: "#products" },
-  { label: "Order", href: "#order" },
-  { label: "Contact", href: "#contact" },
+  { label: "Home", href: "/#home" },
+  { label: "About", href: "/#about" },
+  { label: "Occasions", href: "/#occasions" },
+  { label: "Shop", href: "/shop" },
+  { label: "Contact", href: "/#contact" },
 ];
 
 export default function Header() {
@@ -28,51 +29,55 @@ export default function Header() {
       }`}
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between py-4">
-        <a href="#home" className="font-display text-2xl sm:text-3xl text-luxe-rose">
+        <Link href="/#home" className="font-display text-2xl sm:text-3xl text-luxe-rose">
           Becca&apos;s <span className="font-script text-luxe-mauve">Luxe</span>
-        </a>
+        </Link>
 
         <nav className="hidden md:flex items-center gap-8">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               className="text-sm uppercase tracking-widest font-medium text-luxe-ink hover:text-luxe-rose transition-colors"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a href="#order" className="btn-primary !py-3 !px-6">
-            Order Now
-          </a>
+          <CartButton />
+          <Link href="/shop" className="btn-primary !py-3 !px-6">
+            Shop Now
+          </Link>
         </nav>
 
-        <button
-          aria-label="Toggle menu"
-          className="md:hidden flex flex-col gap-1.5 p-2"
-          onClick={() => setMenuOpen((v) => !v)}
-        >
-          <span className="w-6 h-0.5 bg-luxe-ink" />
-          <span className="w-6 h-0.5 bg-luxe-ink" />
-          <span className="w-6 h-0.5 bg-luxe-ink" />
-        </button>
+        <div className="md:hidden flex items-center gap-4">
+          <CartButton />
+          <button
+            aria-label="Toggle menu"
+            className="flex flex-col gap-1.5 p-2"
+            onClick={() => setMenuOpen((v) => !v)}
+          >
+            <span className="w-6 h-0.5 bg-luxe-ink" />
+            <span className="w-6 h-0.5 bg-luxe-ink" />
+            <span className="w-6 h-0.5 bg-luxe-ink" />
+          </button>
+        </div>
       </div>
 
       {menuOpen && (
         <div className="md:hidden bg-luxe-cream border-t border-luxe-rose/20 px-6 py-4 flex flex-col gap-4">
           {NAV_LINKS.map((link) => (
-            <a
+            <Link
               key={link.href}
               href={link.href}
               onClick={() => setMenuOpen(false)}
               className="text-sm uppercase tracking-widest font-medium text-luxe-ink hover:text-luxe-rose transition-colors"
             >
               {link.label}
-            </a>
+            </Link>
           ))}
-          <a href="#order" className="btn-primary" onClick={() => setMenuOpen(false)}>
-            Order Now
-          </a>
+          <Link href="/shop" className="btn-primary" onClick={() => setMenuOpen(false)}>
+            Shop Now
+          </Link>
         </div>
       )}
     </header>
