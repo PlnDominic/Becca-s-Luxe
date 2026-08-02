@@ -184,6 +184,7 @@ export const PRODUCTS: Product[] = [
     price: 100,
     description: "Frame to display memories that last forever.",
     color: "bg-neutral-100",
+    image: "/images/products/photo-frame.jpg",
     rating: 4.9,
     reviews: 67,
     isNew: true,
