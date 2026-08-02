@@ -47,7 +47,7 @@ export default function CartDrawer() {
                 return (
                   <li key={item.id} className="flex gap-4">
                     <div
-                      className={`w-16 h-16 shrink-0 ${product.color} border border-luxe-rose/10`}
+                      className={`w-16 h-16 rounded-xl shrink-0 ${product.color} border border-luxe-rose/10`}
                     />
                     <div className="flex-1">
                       <p className="font-display text-lg text-luxe-ink leading-tight">
@@ -59,7 +59,7 @@ export default function CartDrawer() {
                       <div className="mt-2 flex items-center gap-3">
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity - 1)}
-                          className="w-7 h-7 border border-luxe-ink/30 text-luxe-ink hover:border-luxe-rose hover:text-luxe-rose"
+                          className="w-7 h-7 rounded-full border border-luxe-ink/30 text-luxe-ink hover:border-luxe-rose hover:text-luxe-rose"
                           aria-label="Decrease quantity"
                         >
                           −
@@ -67,7 +67,7 @@ export default function CartDrawer() {
                         <span className="text-sm w-6 text-center">{item.quantity}</span>
                         <button
                           onClick={() => updateQuantity(item.id, item.quantity + 1)}
-                          className="w-7 h-7 border border-luxe-ink/30 text-luxe-ink hover:border-luxe-rose hover:text-luxe-rose"
+                          className="w-7 h-7 rounded-full border border-luxe-ink/30 text-luxe-ink hover:border-luxe-rose hover:text-luxe-rose"
                           aria-label="Increase quantity"
                         >
                           +

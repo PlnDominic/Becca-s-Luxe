@@ -24,7 +24,7 @@ export default function Occasions() {
           {OCCASIONS.map((occasion) => (
             <div
               key={occasion.name}
-              className={`${occasion.color} border border-luxe-rose/10 py-10 px-4 flex items-center justify-center text-center transition-transform hover:-translate-y-1`}
+              className={`${occasion.color} border border-luxe-rose/10 rounded-2xl py-10 px-4 flex items-center justify-center text-center transition-transform hover:-translate-y-1`}
             >
               <span className="font-display text-lg sm:text-xl text-luxe-ink">
                 {occasion.name}

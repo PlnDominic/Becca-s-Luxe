@@ -26,14 +26,14 @@ export default function Recommendations({ products }: { products: Product[] }) {
             <button
               onClick={() => scroll("left")}
               aria-label="Scroll left"
-              className="w-10 h-10 border border-luxe-ink/20 flex items-center justify-center hover:border-luxe-ink text-luxe-ink"
+              className="w-10 h-10 rounded-full border border-luxe-ink/20 flex items-center justify-center hover:border-luxe-ink text-luxe-ink"
             >
               <ArrowLeftIcon className="w-5 h-5" />
             </button>
             <button
               onClick={() => scroll("right")}
               aria-label="Scroll right"
-              className="w-10 h-10 border border-luxe-ink/20 flex items-center justify-center hover:border-luxe-ink text-luxe-ink"
+              className="w-10 h-10 rounded-full border border-luxe-ink/20 flex items-center justify-center hover:border-luxe-ink text-luxe-ink"
             >
               <ArrowRightIcon className="w-5 h-5" />
             </button>

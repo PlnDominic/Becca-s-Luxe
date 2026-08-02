@@ -73,7 +73,7 @@ export default function OrderForm() {
               name="name"
               type="text"
               required
-              className="bg-transparent border border-white/30 px-4 py-3 focus:outline-none focus:border-luxe-rose text-white"
+              className="bg-transparent border border-white/30 rounded-xl px-4 py-3 focus:outline-none focus:border-luxe-rose text-white"
             />
           </div>
 
@@ -86,7 +86,7 @@ export default function OrderForm() {
               name="phone"
               type="tel"
               required
-              className="bg-transparent border border-white/30 px-4 py-3 focus:outline-none focus:border-luxe-rose text-white"
+              className="bg-transparent border border-white/30 rounded-xl px-4 py-3 focus:outline-none focus:border-luxe-rose text-white"
             />
           </div>
 
@@ -98,7 +98,7 @@ export default function OrderForm() {
               id="email"
               name="email"
               type="email"
-              className="bg-transparent border border-white/30 px-4 py-3 focus:outline-none focus:border-luxe-rose text-white"
+              className="bg-transparent border border-white/30 rounded-xl px-4 py-3 focus:outline-none focus:border-luxe-rose text-white"
             />
           </div>
 
@@ -110,7 +110,7 @@ export default function OrderForm() {
               id="occasion"
               name="occasion"
               required
-              className="bg-transparent border border-white/30 px-4 py-3 focus:outline-none focus:border-luxe-rose text-white [&>option]:text-luxe-ink"
+              className="bg-transparent border border-white/30 rounded-xl px-4 py-3 focus:outline-none focus:border-luxe-rose text-white [&>option]:text-luxe-ink"
               defaultValue=""
             >
               <option value="" disabled>
@@ -133,7 +133,7 @@ export default function OrderForm() {
               name="message"
               rows={5}
               required
-              className="bg-transparent border border-white/30 px-4 py-3 focus:outline-none focus:border-luxe-rose text-white resize-none"
+              className="bg-transparent border border-white/30 rounded-xl px-4 py-3 focus:outline-none focus:border-luxe-rose text-white resize-none"
               placeholder="Product type, quantity, colors, date needed..."
             />
           </div>

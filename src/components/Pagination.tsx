@@ -16,7 +16,7 @@ export default function Pagination({
       <button
         onClick={() => onChange(Math.max(1, page - 1))}
         disabled={page === 1}
-        className="px-4 py-2 text-xs uppercase tracking-widest font-semibold border border-luxe-ink/20 text-luxe-ink hover:border-luxe-ink disabled:opacity-30 disabled:cursor-not-allowed"
+        className="px-4 py-2 rounded-full text-xs uppercase tracking-widest font-semibold border border-luxe-ink/20 text-luxe-ink hover:border-luxe-ink disabled:opacity-30 disabled:cursor-not-allowed"
       >
         Previous
       </button>
@@ -25,7 +25,7 @@ export default function Pagination({
         <button
           key={p}
           onClick={() => onChange(p)}
-          className={`w-10 h-10 text-sm font-semibold border ${
+          className={`w-10 h-10 rounded-full text-sm font-semibold border ${
             p === page
               ? "bg-luxe-ink text-white border-luxe-ink"
               : "border-luxe-ink/20 text-luxe-ink hover:border-luxe-ink"
@@ -38,7 +38,7 @@ export default function Pagination({
       <button
         onClick={() => onChange(Math.min(totalPages, page + 1))}
         disabled={page === totalPages}
-        className="px-4 py-2 text-xs uppercase tracking-widest font-semibold border border-luxe-ink/20 text-luxe-ink hover:border-luxe-ink disabled:opacity-30 disabled:cursor-not-allowed"
+        className="px-4 py-2 rounded-full text-xs uppercase tracking-widest font-semibold border border-luxe-ink/20 text-luxe-ink hover:border-luxe-ink disabled:opacity-30 disabled:cursor-not-allowed"
       >
         Next
       </button>

@@ -82,7 +82,7 @@ export default function CheckoutPage() {
           </div>
 
           {items.length === 0 ? (
-            <div className="text-center bg-white border border-luxe-ink/10 p-14">
+            <div className="text-center bg-white border border-luxe-ink/10 rounded-2xl p-14">
               <p className="text-luxe-ink/70 mb-6">Your cart is empty.</p>
               <Link href="/shop" className="btn-primary">
                 Browse the Shop
@@ -90,7 +90,7 @@ export default function CheckoutPage() {
             </div>
           ) : (
             <div className="grid lg:grid-cols-5 gap-10">
-              <div className="lg:col-span-3 bg-white border border-luxe-ink/10 p-8">
+              <div className="lg:col-span-3 bg-white border border-luxe-ink/10 rounded-2xl p-8">
                 <h2 className="font-display text-2xl text-luxe-ink mb-6">
                   Delivery Details
                 </h2>
@@ -104,7 +104,7 @@ export default function CheckoutPage() {
                       name="name"
                       type="text"
                       required
-                      className="border border-luxe-ink/20 px-4 py-3 focus:outline-none focus:border-luxe-rose"
+                      className="border border-luxe-ink/20 rounded-xl px-4 py-3 focus:outline-none focus:border-luxe-rose"
                     />
                   </div>
 
@@ -117,7 +117,7 @@ export default function CheckoutPage() {
                       name="phone"
                       type="tel"
                       required
-                      className="border border-luxe-ink/20 px-4 py-3 focus:outline-none focus:border-luxe-rose"
+                      className="border border-luxe-ink/20 rounded-xl px-4 py-3 focus:outline-none focus:border-luxe-rose"
                     />
                   </div>
 
@@ -129,7 +129,7 @@ export default function CheckoutPage() {
                       id="email"
                       name="email"
                       type="email"
-                      className="border border-luxe-ink/20 px-4 py-3 focus:outline-none focus:border-luxe-rose"
+                      className="border border-luxe-ink/20 rounded-xl px-4 py-3 focus:outline-none focus:border-luxe-rose"
                     />
                   </div>
 
@@ -143,7 +143,7 @@ export default function CheckoutPage() {
                       type="text"
                       required
                       placeholder="e.g. Taifa, Accra"
-                      className="border border-luxe-ink/20 px-4 py-3 focus:outline-none focus:border-luxe-rose"
+                      className="border border-luxe-ink/20 rounded-xl px-4 py-3 focus:outline-none focus:border-luxe-rose"
                     />
                   </div>
 
@@ -156,7 +156,7 @@ export default function CheckoutPage() {
                       name="notes"
                       rows={4}
                       placeholder="Names, dates, colors or other customization details..."
-                      className="border border-luxe-ink/20 px-4 py-3 focus:outline-none focus:border-luxe-rose resize-none"
+                      className="border border-luxe-ink/20 rounded-xl px-4 py-3 focus:outline-none focus:border-luxe-rose resize-none"
                     />
                   </div>
 
@@ -175,7 +175,7 @@ export default function CheckoutPage() {
                 </form>
               </div>
 
-              <div className="lg:col-span-2 bg-luxe-ink text-white p-8 h-fit">
+              <div className="lg:col-span-2 bg-luxe-ink text-white rounded-2xl p-8 h-fit">
                 <h2 className="font-display text-2xl mb-6">Order Summary</h2>
                 <ul className="flex flex-col gap-4 mb-6">
                   {items.map((item) => {

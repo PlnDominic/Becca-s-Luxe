@@ -41,7 +41,7 @@ export default function Header() {
     >
       <div className="mx-auto max-w-7xl px-6 lg:px-10 flex items-center justify-between py-4">
         <Link href="/#home" className="flex items-center gap-3">
-          <span className="w-9 h-9 bg-luxe-ink text-white flex items-center justify-center font-display text-lg">
+          <span className="w-9 h-9 rounded-xl bg-luxe-ink text-white flex items-center justify-center font-display text-lg">
             B
           </span>
           <span className="font-display text-xl sm:text-2xl text-luxe-ink">
@@ -92,16 +92,18 @@ export default function Header() {
             onSubmit={handleSearch}
             className="mx-auto max-w-7xl px-6 lg:px-10 py-4 flex items-center gap-3"
           >
-            <SearchIcon className="w-5 h-5 text-luxe-ink/50" />
-            <input
-              autoFocus
-              type="text"
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-              placeholder="Search for souvenirs..."
-              className="flex-1 border-b border-luxe-ink/20 py-2 focus:outline-none focus:border-luxe-rose bg-transparent"
-            />
-            <button type="submit" className="btn-primary !py-2 !px-5">
+            <div className="flex-1 flex items-center gap-2 border border-luxe-ink/20 rounded-full px-4">
+              <SearchIcon className="w-5 h-5 text-luxe-ink/40 shrink-0" />
+              <input
+                autoFocus
+                type="text"
+                value={query}
+                onChange={(e) => setQuery(e.target.value)}
+                placeholder="Search for souvenirs..."
+                className="w-full py-2.5 focus:outline-none bg-transparent"
+              />
+            </div>
+            <button type="submit" className="btn-primary !py-2.5 !px-5">
               Search
             </button>
           </form>
@@ -126,7 +128,7 @@ export default function Header() {
               value={query}
               onChange={(e) => setQuery(e.target.value)}
               placeholder="Search..."
-              className="flex-1 border border-luxe-ink/20 px-3 py-2 focus:outline-none focus:border-luxe-rose"
+              className="flex-1 border border-luxe-ink/20 rounded-full px-4 py-2 focus:outline-none focus:border-luxe-rose"
             />
             <button type="submit" className="btn-primary !py-2 !px-4">
               Go

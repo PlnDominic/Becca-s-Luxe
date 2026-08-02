@@ -24,12 +24,12 @@ export default function ProductCard({ product }: { product: Product }) {
   }
 
   return (
-    <div className="bg-white border border-luxe-ink/10 flex flex-col group">
+    <div className="bg-white border border-neutral-200 rounded-2xl overflow-hidden flex flex-col group">
       <div className={`relative h-56 ${product.color} flex items-center justify-center`}>
-        <span className="absolute top-4 right-4 bg-white border border-luxe-ink/10 px-3 py-1 text-[11px] uppercase tracking-widest font-semibold text-luxe-ink">
+        <span className="absolute top-4 right-4 bg-white border border-neutral-200 rounded-full px-3 py-1 text-[11px] uppercase tracking-widest font-semibold text-luxe-ink">
           {product.badge}
         </span>
-        <span className="font-script text-3xl text-luxe-ink/60">{product.tag}</span>
+        <span className="font-script text-3xl text-luxe-ink/50">{product.tag}</span>
       </div>
 
       <div className="p-6 flex flex-col gap-3 flex-1">
@@ -42,13 +42,13 @@ export default function ProductCard({ product }: { product: Product }) {
         <div className="mt-auto pt-2 flex items-center gap-3">
           <button
             onClick={handleAddToCart}
-            className="flex-1 border-2 border-luxe-ink text-luxe-ink px-4 py-3 text-xs uppercase tracking-widest font-semibold hover:bg-luxe-ink hover:text-white transition-colors"
+            className="flex-1 border-2 border-luxe-ink text-luxe-ink px-4 py-3 rounded-full text-xs uppercase tracking-widest font-semibold hover:bg-luxe-ink hover:text-white transition-colors"
           >
             {added ? "Added" : "Add to Chart"}
           </button>
           <button
             onClick={handleBuyNow}
-            className="flex-1 bg-luxe-ink text-white px-4 py-3 text-xs uppercase tracking-widest font-semibold hover:bg-luxe-rose transition-colors"
+            className="flex-1 bg-luxe-ink text-white px-4 py-3 rounded-full text-xs uppercase tracking-widest font-semibold hover:bg-luxe-rose transition-colors"
           >
             Buy Now
           </button>

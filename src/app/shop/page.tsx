@@ -84,14 +84,14 @@ function ShopContent() {
 
       <section className="pt-24 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-10">
-          <div className="relative h-[280px] sm:h-[320px] overflow-hidden bg-gradient-to-br from-luxe-ink via-luxe-mauve to-luxe-rose flex items-center justify-center">
+          <div className="relative h-[280px] sm:h-[320px] rounded-[2.5rem] overflow-hidden bg-gradient-to-br from-luxe-ink via-luxe-mauve to-luxe-rose flex items-center justify-center">
             <div className="absolute inset-0 bg-[radial-gradient(circle_at_25%_30%,rgba(255,255,255,0.2),transparent_45%)]" />
             <h1 className="relative font-display text-[22vw] sm:text-8xl text-white/90 select-none">
               Shop
             </h1>
           </div>
 
-          <div className="relative -mt-14 sm:-mt-16 mx-auto max-w-4xl bg-white border border-luxe-ink/10 shadow-xl px-6 sm:px-10 py-8 text-center">
+          <div className="relative -mt-14 sm:-mt-16 mx-auto max-w-4xl bg-white border border-luxe-ink/10 rounded-3xl shadow-xl px-6 sm:px-10 py-8 text-center">
             <h2 className="font-display text-2xl sm:text-3xl text-luxe-ink">
               Give All You Need
             </h2>
@@ -99,7 +99,7 @@ function ShopContent() {
               onSubmit={(e) => e.preventDefault()}
               className="mt-5 flex flex-col sm:flex-row items-stretch gap-3 max-w-xl mx-auto"
             >
-              <div className="flex-1 flex items-center gap-2 border border-luxe-ink/20 px-4">
+              <div className="flex-1 flex items-center gap-2 border border-luxe-ink/20 rounded-full px-4">
                 <SearchIcon className="w-5 h-5 text-luxe-ink/40 shrink-0" />
                 <input
                   type="text"
@@ -120,7 +120,7 @@ function ShopContent() {
       <section className="pt-16 pb-24 bg-white">
         <div className="mx-auto max-w-7xl px-6 lg:px-10 grid lg:grid-cols-4 gap-10">
           <aside className="lg:col-span-1">
-            <div className="border border-luxe-ink/10 p-6">
+            <div className="border border-luxe-ink/10 rounded-2xl p-6">
               <h3 className="font-display text-xl text-luxe-ink mb-4">Category</h3>
               <ul className="flex flex-col gap-3">
                 {CATEGORIES.map((cat) => (
@@ -130,14 +130,14 @@ function ShopContent() {
                       className="flex items-center gap-3 w-full text-left group"
                     >
                       <span
-                        className={`w-4 h-4 border flex items-center justify-center ${
+                        className={`w-4 h-4 rounded-md border flex items-center justify-center ${
                           category === cat
                             ? "bg-luxe-ink border-luxe-ink"
                             : "border-luxe-ink/30"
                         }`}
                       >
                         {category === cat && (
-                          <span className="w-2 h-2 bg-white" />
+                          <span className="w-2 h-2 rounded-sm bg-white" />
                         )}
                       </span>
                       <span
@@ -149,16 +149,22 @@ function ShopContent() {
                       >
                         {cat === "All" ? "All Product" : cat}
                       </span>
-                      <span className="text-xs text-luxe-ink/40">
-                        {categoryCount(cat)}
-                      </span>
+                      {cat === "All" ? (
+                        <span className="bg-luxe-rose text-white text-[10px] font-semibold rounded-full w-5 h-5 flex items-center justify-center">
+                          {categoryCount(cat)}
+                        </span>
+                      ) : (
+                        <span className="text-xs text-luxe-ink/40">
+                          {categoryCount(cat)}
+                        </span>
+                      )}
                     </button>
                   </li>
                 ))}
               </ul>
             </div>
 
-            <div className="border border-luxe-ink/10 p-6 mt-6">
+            <div className="border border-luxe-ink/10 rounded-2xl p-6 mt-6">
               <h3 className="font-display text-xl text-luxe-ink mb-4">Sort By</h3>
               <ul className="flex flex-col gap-3">
                 {SORT_OPTIONS.map((option) => (
@@ -170,14 +176,14 @@ function ShopContent() {
                       className="flex items-center gap-3 w-full text-left group"
                     >
                       <span
-                        className={`w-4 h-4 border flex items-center justify-center ${
+                        className={`w-4 h-4 rounded-full border flex items-center justify-center ${
                           sort === option.value
-                            ? "bg-luxe-ink border-luxe-ink"
+                            ? "border-luxe-ink"
                             : "border-luxe-ink/30"
                         }`}
                       >
                         {sort === option.value && (
-                          <span className="w-2 h-2 bg-white" />
+                          <span className="w-2 h-2 rounded-full bg-luxe-ink" />
                         )}
                       </span>
                       <span
@@ -198,7 +204,7 @@ function ShopContent() {
 
           <div className="lg:col-span-3">
             {paged.length === 0 ? (
-              <div className="border border-luxe-ink/10 p-14 text-center text-luxe-ink/60">
+              <div className="border border-luxe-ink/10 rounded-2xl p-14 text-center text-luxe-ink/60">
                 No products match your search yet.
               </div>
             ) : (

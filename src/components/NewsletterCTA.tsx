@@ -54,12 +54,12 @@ export default function NewsletterCTA() {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               placeholder="Your Email"
-              className="flex-1 bg-transparent border border-white/30 px-4 py-3 focus:outline-none focus:border-luxe-rose text-white"
+              className="flex-1 bg-transparent border border-white/30 rounded-full px-4 py-3 focus:outline-none focus:border-luxe-rose text-white"
             />
             <button
               type="submit"
               disabled={status === "loading"}
-              className="bg-luxe-rose text-white px-6 py-3 uppercase tracking-widest text-sm font-semibold hover:bg-white hover:text-luxe-ink transition-colors disabled:opacity-60"
+              className="bg-luxe-rose text-white px-6 py-3 rounded-full uppercase tracking-widest text-sm font-semibold hover:bg-white hover:text-luxe-ink transition-colors disabled:opacity-60"
             >
               {status === "loading" ? "Sending..." : "Send"}
             </button>

@@ -20,7 +20,7 @@ const CONTACT = [
 
 function SocialIcon({ path }: { path: string }) {
   return (
-    <span className="w-9 h-9 border border-luxe-ink/20 flex items-center justify-center text-luxe-ink hover:bg-luxe-ink hover:text-white transition-colors cursor-pointer">
+    <span className="w-9 h-9 rounded-full border border-luxe-ink/20 flex items-center justify-center text-luxe-ink hover:bg-luxe-ink hover:text-white transition-colors cursor-pointer">
       <svg viewBox="0 0 24 24" className="w-4 h-4" fill="currentColor">
         <path d={path} />
       </svg>
