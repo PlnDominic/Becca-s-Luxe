@@ -74,7 +74,7 @@ export default function Header() {
             href="/shop"
             className="btn-primary !px-3 !py-1.5 !text-[10px] !tracking-wide whitespace-nowrap md:!px-6 md:!py-3 md:!text-sm md:!tracking-widest"
           >
-            Shop Now
+            Order Now
           </Link>
 
           <button
@@ -138,7 +138,7 @@ export default function Header() {
             </button>
           </form>
           <Link href="/shop" className="btn-primary" onClick={() => setMenuOpen(false)}>
-            Shop Now
+            Order Now
           </Link>
         </div>
       )}

@@ -18,7 +18,7 @@ body {
   }
 
   .section-eyebrow {
-    @apply font-body uppercase tracking-[0.25em] text-xs sm:text-sm text-luxe-mauve font-semibold;
+    @apply font-body uppercase tracking-[0.25em] text-xs sm:text-sm text-luxe-rosedark font-semibold;
   }
 
   .btn-primary {

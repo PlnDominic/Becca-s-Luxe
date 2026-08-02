@@ -27,9 +27,6 @@ export default function ProductCard({ product }: { product: Product }) {
   return (
     <div className="bg-white border border-neutral-200 rounded-2xl overflow-hidden flex flex-col group">
       <div className={`relative aspect-square w-full ${product.color} flex items-center justify-center overflow-hidden`}>
-        <span className="absolute top-2 right-2 sm:top-4 sm:right-4 z-10 bg-white border border-neutral-200 rounded-full px-2 py-0.5 sm:px-3 sm:py-1 text-[9px] sm:text-[11px] uppercase tracking-widest font-semibold text-luxe-ink">
-          {product.badge}
-        </span>
         {product.image ? (
           <Image
             src={product.image}
