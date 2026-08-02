@@ -143,6 +143,7 @@ export const PRODUCTS: Product[] = [
     price: 120,
     description: "Elegant box to honor and remember loved ones.",
     color: "bg-neutral-100",
+    image: "/images/products/memory-keepsake-box.jpg",
     rating: 4.9,
     reviews: 37,
   },
