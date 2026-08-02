@@ -198,6 +198,7 @@ export const PRODUCTS: Product[] = [
     price: 60,
     description: "Beautifully designed tissue box for happy tears.",
     color: "bg-neutral-100",
+    image: "/images/products/decorative-tissue-box.jpg",
     rating: 4.6,
     reviews: 29,
     onDiscount: true,
