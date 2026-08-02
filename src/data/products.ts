@@ -154,6 +154,7 @@ export const PRODUCTS: Product[] = [
     price: 80,
     description: "Plush towel personalized for celebrations.",
     color: "bg-neutral-100",
+    image: "/images/products/personalized-towel.jpg",
     rating: 4.8,
     reviews: 89,
     isBestSeller: true,
