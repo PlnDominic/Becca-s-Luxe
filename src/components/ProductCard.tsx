@@ -1,5 +1,6 @@
 "use client";
 
+import Image from "next/image";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 import type { Product } from "@/data/products";
@@ -25,11 +26,21 @@ export default function ProductCard({ product }: { product: Product }) {
 
   return (
     <div className="bg-white border border-neutral-200 rounded-2xl overflow-hidden flex flex-col group">
-      <div className={`relative h-56 ${product.color} flex items-center justify-center`}>
-        <span className="absolute top-4 right-4 bg-white border border-neutral-200 rounded-full px-3 py-1 text-[11px] uppercase tracking-widest font-semibold text-luxe-ink">
+      <div className={`relative h-56 ${product.color} flex items-center justify-center overflow-hidden`}>
+        <span className="absolute top-4 right-4 z-10 bg-white border border-neutral-200 rounded-full px-3 py-1 text-[11px] uppercase tracking-widest font-semibold text-luxe-ink">
           {product.badge}
         </span>
-        <span className="font-script text-3xl text-luxe-ink/50">{product.tag}</span>
+        {product.image ? (
+          <Image
+            src={product.image}
+            alt={product.name}
+            fill
+            sizes="(min-width: 1280px) 33vw, (min-width: 640px) 50vw, 100vw"
+            className="object-cover"
+          />
+        ) : (
+          <span className="font-script text-3xl text-luxe-ink/50">{product.tag}</span>
+        )}
       </div>
 
       <div className="p-6 flex flex-col gap-3 flex-1">

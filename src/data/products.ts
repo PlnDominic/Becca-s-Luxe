@@ -7,6 +7,7 @@ export interface Product {
   price: number;
   description: string;
   color: string;
+  image?: string;
   rating: number;
   reviews: number;
   isNew?: boolean;
@@ -33,6 +34,7 @@ export const PRODUCTS: Product[] = [
     price: 85,
     description: "Canvas tote personalized with your special message.",
     color: "bg-neutral-100",
+    image: "/images/products/personalized-tote-bag.jpg",
     rating: 5.0,
     reviews: 128,
     isBestSeller: true,
