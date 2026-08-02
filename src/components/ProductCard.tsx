@@ -60,7 +60,7 @@ export default function ProductCard({ product }: { product: Product }) {
             onClick={handleBuyNow}
             className="flex-1 bg-luxe-ink text-white px-2 py-2 sm:px-4 sm:py-3 rounded-full text-[10px] sm:text-xs uppercase tracking-widest font-semibold hover:bg-luxe-rose transition-colors"
           >
-            Buy Now
+            Order Now
           </button>
         </div>
       </div>
