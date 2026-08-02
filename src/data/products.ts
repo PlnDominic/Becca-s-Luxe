@@ -171,6 +171,7 @@ export const PRODUCTS: Product[] = [
     price: 35,
     description: "Small acrylic token to remember every moment.",
     color: "bg-neutral-100",
+    image: "/images/products/acrylic-keychain.jpg",
     rating: 4.7,
     reviews: 112,
   },
