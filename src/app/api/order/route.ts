@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { sendMail } from "@/lib/mailer";
 
 interface OrderPayload {
   name?: string;
@@ -33,6 +34,20 @@ export async function POST(req: NextRequest) {
     occasion,
     message,
     receivedAt: new Date().toISOString(),
+  });
+
+  await sendMail({
+    subject: `New Order Request — ${occasion}`,
+    text: [
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      `Email: ${email || "Not provided"}`,
+      `Occasion: ${occasion}`,
+      "",
+      "Order details:",
+      message,
+    ].join("\n"),
+    replyTo: email,
   });
 
   return NextResponse.json({ success: true });

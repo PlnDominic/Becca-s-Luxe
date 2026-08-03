@@ -1,4 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
+import { sendMail } from "@/lib/mailer";
 
 export async function POST(req: NextRequest) {
   let body: { email?: string };
@@ -19,6 +20,12 @@ export async function POST(req: NextRequest) {
   console.log("New Becca's Luxe newsletter signup:", {
     email,
     receivedAt: new Date().toISOString(),
+  });
+
+  await sendMail({
+    subject: "New Newsletter Signup",
+    text: `New newsletter signup: ${email}`,
+    replyTo: email,
   });
 
   return NextResponse.json({ success: true });

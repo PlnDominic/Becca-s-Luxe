@@ -1,5 +1,7 @@
 import { NextRequest, NextResponse } from "next/server";
 import { PRODUCTS } from "@/data/products";
+import { sendMail } from "@/lib/mailer";
+import { formatPrice } from "@/lib/currency";
 
 interface CheckoutItem {
   id: string;
@@ -56,6 +58,7 @@ export async function POST(req: NextRequest) {
   }
 
   const total = orderItems.reduce((sum, item) => sum + item.lineTotal, 0);
+  const orderId = `BL-${Date.now()}`;
 
   console.log("New Becca's Luxe storefront checkout:", {
     name,
@@ -68,5 +71,27 @@ export async function POST(req: NextRequest) {
     receivedAt: new Date().toISOString(),
   });
 
-  return NextResponse.json({ success: true, orderId: `BL-${Date.now()}`, total });
+  await sendMail({
+    subject: `New Checkout Order ${orderId}`,
+    text: [
+      `Order ID: ${orderId}`,
+      `Name: ${name}`,
+      `Phone: ${phone}`,
+      `Email: ${email || "Not provided"}`,
+      `Delivery Address: ${address}`,
+      notes ? `Notes: ${notes}` : null,
+      "",
+      "Items:",
+      ...orderItems.map(
+        (item) => `- ${item.name} x${item.quantity} — ${formatPrice(item.lineTotal)}`
+      ),
+      "",
+      `Total: ${formatPrice(total)}`,
+    ]
+      .filter(Boolean)
+      .join("\n"),
+    replyTo: email,
+  });
+
+  return NextResponse.json({ success: true, orderId, total });
 }
